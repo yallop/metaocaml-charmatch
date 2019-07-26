@@ -1,0 +1,18 @@
+opam-version: "1.2"
+name: "charmatch"
+version: "dev"
+maintainer: "yallop@gmail.com"
+authors: ["Jeremy Yallop <yallop@gmail.com>"]
+homepage: "https://github.com/yallop/metaocaml-charmatch"
+dev-repo: "http://github.com/yallop/metaocaml-charmatch.git"
+bug-reports: "http://github.com/yallop/metaocaml-charmatch/issues"
+license: "MIT"
+build: [[make]]
+build-test: [[make "test" "bench"]]
+install: [[make "install"]]
+remove: [["ocamlfind" "remove" "charmatch"]]
+depends: [
+   "ocamlfind"  {build}
+   "ocamlbuild" {build}
+]
+available: [ compiler = "4.07.1+BER" | compiler = "4.04.0+BER" ]
