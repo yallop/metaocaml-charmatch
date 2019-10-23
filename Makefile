@@ -11,6 +11,7 @@ lib:
 
 install: lib
 	ocamlfind install charmatch META		\
+	   _build/lib/charmatch.a			\
 	   _build/lib/charmatch.cmi			\
            _build/lib/charmatch.cma			\
            _build/lib/charmatch.cmxa
