@@ -14,5 +14,8 @@ remove: [["ocamlfind" "remove" "charmatch"]]
 depends: [
    "ocamlfind"  {build}
    "ocamlbuild" {build}
+   "ocaml"
+   "ocaml-variants"
+     {= "4.07.1+BER" | = "4.04.0+BER" }
 ]
-available: [ compiler = "4.07.1+BER" | compiler = "4.04.0+BER" ]
+
