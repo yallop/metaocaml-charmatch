@@ -1,11 +1,11 @@
-opam-version: "1.2"
+opam-version: "2.0"
 name: "charmatch"
-version: "dev"
+synopsis: "Pattern-matching generation for characters"
 maintainer: "yallop@gmail.com"
 authors: ["Jeremy Yallop <yallop@gmail.com>"]
 homepage: "https://github.com/yallop/metaocaml-charmatch"
-dev-repo: "http://github.com/yallop/metaocaml-charmatch.git"
-bug-reports: "http://github.com/yallop/metaocaml-charmatch/issues"
+dev-repo: "git+https://github.com/yallop/metaocaml-charmatch.git"
+bug-reports: "https://github.com/yallop/metaocaml-charmatch/issues"
 license: "MIT"
 build: [[make]]
 build-test: [[make "test" "bench"]]
