@@ -1,0 +1,6 @@
+(library
+ (public_name charmatch)
+ (modules charmatch)
+ (libraries compiler-libs)
+ (flags (:standard "-open" "Codelib"))
+ (synopsis "Pattern-matching generation for characters"))

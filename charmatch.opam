@@ -7,15 +7,14 @@ homepage: "https://github.com/yallop/metaocaml-charmatch"
 dev-repo: "git+https://github.com/yallop/metaocaml-charmatch.git"
 bug-reports: "https://github.com/yallop/metaocaml-charmatch/issues"
 license: "MIT"
-build: [[make]]
-build-test: [[make "test" "bench"]]
-install: [[make "install"]]
-remove: [["ocamlfind" "remove" "charmatch"]]
+build: [
+  ["dune" "subst"] {dev}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
 depends: [
-   "ocamlfind"  {build}
-   "ocamlbuild" {build}
    "ocaml"
+   "dune"
    "ocaml-variants"
      {= "4.07.1+BER" | = "4.04.0+BER" | = "4.11.1+BER" }
 ]
-
