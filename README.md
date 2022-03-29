@@ -1,5 +1,7 @@
 ## charmatch: pattern-matching generation for characters
 
+[![Charmatch test](https://github.com/yallop/metaocaml-charmatch/actions/workflows/test.yml/badge.svg)](https://github.com/yallop/metaocaml-charmatch/actions/workflows/test.yml)
+
 The following call:
 
 ```ocaml
