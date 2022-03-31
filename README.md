@@ -12,7 +12,7 @@ module C = Set.Make(Char)
                 ~otherwise:.<3>.) >.
 ```
 
-generates compact code for matching characters:
+either generates compact code for matching characters:
 
 ```ocaml
 fun x ->
@@ -20,4 +20,18 @@ fun x ->
    | 'a'..'c' | 'e'..'g' | 'z' -> 1
    | '1'..'3' | '9' -> 2
    | _ -> 3
+```
+
+or, depending on the options passed to `ifmem`, generates equivalent (but typically faster) code based on a table lookup:
+
+```ocaml
+fun x ->
+  match Char.code
+          (String.unsafe_get
+             "\002...\002\001\001\001\002\002...\002\002\000\000\000\002\000\000\000\002\002...\002\002"
+             (Char.code x))
+  with
+  | 0 -> 1
+  | 1 -> 2
+  | _ -> 3
 ```
