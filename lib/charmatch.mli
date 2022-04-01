@@ -5,4 +5,9 @@
  * See the file LICENSE for details.
  *)
 
-val ifmem : char code -> ?otherwise:'a code -> (Set.Make(Char).t * 'a code) list -> 'a code
+module Make(Charset: Set.S with type elt = char) :
+sig
+  val ifmem : char code -> ?otherwise:'a code -> (Charset.t * 'a code) list -> 'a code
+end
+
+include module type of Make(Set.Make(Char))
