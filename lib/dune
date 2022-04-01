@@ -1,6 +1,6 @@
 (library
  (public_name charmatch)
  (modules charmatch)
- (libraries compiler-libs)
+ (libraries dynlink compiler-libs metaocaml)
  (flags (:standard "-open" "Codelib"))
  (synopsis "Pattern-matching generation for characters"))
