@@ -1,0 +1,5 @@
+(test
+ (name charmatch_tests)
+ (modules charmatch_tests)
+ (modes native)
+ (libraries ounit2 charset dynlink charmatch metaocaml))
