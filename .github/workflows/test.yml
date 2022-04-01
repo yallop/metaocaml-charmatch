@@ -34,3 +34,6 @@ jobs:
 
       - name: Build
         run: opam exec -- dune build -p charmatch
+
+      - name: Test
+        run: opam exec -- dune exec test/charmatch_tests.exe --  -ci true
