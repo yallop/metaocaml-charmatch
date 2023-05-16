@@ -17,7 +17,7 @@ depends: [
    "dune"
    "ocamlfind"
    "ocaml-variants"
-     {= "4.11.1+BER" }
+     {= "4.11.1+BER" | = "4.11.1+BER+flambda" | = "4.14.1+BER"}
    "charset" {with-test}
    "ounit2" {with-test}
 ]
