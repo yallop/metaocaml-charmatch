@@ -17,15 +17,13 @@ struct
   let pattern : pattern_desc -> pattern =
     Ast_helper.Pat.mk
 
-  let expression : expression_desc -> expression =
-    Ast_helper.Exp.mk
-
   let interval : char -> char -> pattern =
-    fun l h -> if l <> h then pattern @@ Ppat_interval (Pconst_char l, Pconst_char h)
-               else pattern @@ Ppat_constant (Pconst_char l)
+    fun l h -> if l <> h
+               then pattern @@ Ppat_interval (Ast_helper.Const.char l, Ast_helper.Const.char h)
+               else pattern @@ Ppat_constant (Ast_helper.Const.char l)
 
   let int_pattern : int -> pattern =
-    fun i -> pattern @@ Ppat_constant (Pconst_integer (string_of_int i, None))
+    fun i -> pattern @@ Ppat_constant (Ast_helper.Const.int i)
 
   let intervals : interval list -> pattern = function
     | [] -> failwith "empty interval list not supported"
@@ -36,7 +34,9 @@ struct
   let case : 'a. pattern -> 'a code -> (_ -> 'a) pat_code =
     fun pat code ->
     let fv, rhs = Obj.magic code in
-    (Obj.magic (fv, expression (Pexp_fun (Asttypes.Nolabel, None, pat, rhs))))
+    (Obj.magic (fv, Ast_helper.Exp.function_ [{ pparam_loc = Location.none;
+                                                pparam_desc = Pparam_val (Nolabel, None, pat) } ]
+                      None (Pfunction_body rhs)))
 end
 
 module Make(Charset : Set.S with type elt = char) =
